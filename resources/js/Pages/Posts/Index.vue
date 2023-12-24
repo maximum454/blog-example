@@ -1,5 +1,5 @@
 <template>
-    <div class="flex-auto max-w-4xl min-w-0 pt-6 lg:px-8 lg:pt-8 pb:12 xl:pb-24 lg:pb-16 mx-auto">
+    <PostLayout>
         <div class="flex justify-between items-center">
             <h1 class="text-5xl mb-6">Post</h1>
             <Link :href="route('post.create')"
@@ -32,12 +32,14 @@
         <div v-else>
             Нет постов
         </div>
-    </div>
+    </PostLayout>
 </template>
 
 <script setup>
 import {Link} from '@inertiajs/vue3'
-import {defineProps} from 'vue'
+import {defineProps, defineOptions} from 'vue'
+import PostLayout from "@/Layouts/PostLayout.vue";
+
 
 defineProps({
     posts: Object
