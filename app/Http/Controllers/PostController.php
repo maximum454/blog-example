@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Post\StoreRequest;
+use App\Http\Requests\Post\UpdateRequest;
 use App\Http\Resources\Post\PostResource;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -31,5 +32,16 @@ class PostController extends Controller
     public function detail(Post $post)
     {
         return Inertia('Posts/Detail', compact('post'));
+    }
+
+    public function edit(Post $post)
+    {
+        return Inertia('Posts/Edit', compact('post'));
+    }
+
+    public function update(Post $post, UpdateRequest $request)
+    {
+        $post->update($request->validated());
+        return redirect()->route('post.index');
     }
 }
